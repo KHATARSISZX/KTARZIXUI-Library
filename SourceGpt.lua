@@ -1,7 +1,6 @@
 local _S1_n = game:GetService("TweenService")
 local _I2_o = game:GetService("UserInputService")
 local _H3_p = game:GetService("HttpService")
-local _R4_q = game:GetService("RunService")
 local _C5_r = game:GetService("CoreGui")
 local _V6_s = Vector2.new(0.5, 0.5)
 local _K8_u = Enum.EasingStyle.Quart
@@ -66,22 +65,26 @@ function _A25_lib:initHub(hub_name, toggle_img, main_img)
     
     local _lbl = Instance.new("TextLabel", tb); _lbl.Text = hub_name; _lbl.Size = UDim2.new(1, -100, 1, 0); _lbl.Position = UDim2.fromOffset(15, 0); _lbl.TextColor3 = _X14_A; _lbl.Font = Enum.Font.GothamBold; _lbl.TextSize = 14; _lbl.BackgroundTransparency = 1; _lbl.TextXAlignment = Enum.TextXAlignment.Left
     
+    -- Dedicated Back Button inside the header
     local backBtn = Instance.new("TextButton", tb); backBtn.Size = UDim2.fromOffset(75, 24); backBtn.Position = UDim2.new(1, -90, 0.5, 0); backBtn.AnchorPoint = Vector2.new(0, 0.5); backBtn.BackgroundColor3 = _Q12_y; backBtn.Text = "← Back"; backBtn.TextColor3 = _X14_A; backBtn.Font = Enum.Font.GothamMedium; backBtn.TextSize = 12; backBtn.AutoButtonColor = false; backBtn.Visible = false
     Instance.new("UICorner", backBtn).CornerRadius = UDim.new(0, 6)
     local bStroke = Instance.new("UIStroke", backBtn); bStroke.Color = _W15_B; bStroke.Thickness = 1
     _f_g4(backBtn)
-
     _f_g3(main, tb)
 
     local cnt = Instance.new("Frame", main); cnt.Size = UDim2.new(1, -20, 1, -55); cnt.Position = UDim2.fromOffset(10, 48); cnt.BackgroundTransparency = 1
     
+    -- Left Decorative Banner Frame (Purely Visual, No Tab Functionality)
     local _m_decor = Instance.new("Frame", cnt); _m_decor.Size = UDim2.new(0.6, -5, 0.65, -5); _m_decor.BackgroundColor3 = _A10_w; Instance.new("UICorner", _m_decor).CornerRadius = UDim.new(0, 10)
     local _m_i = Instance.new("ImageLabel", _m_decor); _m_i.Size = UDim2.fromScale(1,1); _m_i.BackgroundTransparency = 1; _f_g2(_m_i, main_img); Instance.new("UICorner", _m_i).CornerRadius = UDim.new(0, 10)
+    local _md_st = Instance.new("UIStroke", _m_decor); _md_st.Color = _W15_B; _md_st.Thickness = 1
 
+    -- Top Right Interactable Tab Button
     local _tr_btn = Instance.new("Frame", cnt); _tr_btn.Size = UDim2.new(0.4, -5, 0.325, -5); _tr_btn.Position = UDim2.fromScale(0.6, 0); _tr_btn.BackgroundColor3 = _A10_w; Instance.new("UICorner", _tr_btn).CornerRadius = UDim.new(0, 10); _f_g4(_tr_btn)
     local _tr_i = Instance.new("ImageLabel", _tr_btn); _tr_i.Size = UDim2.fromScale(1,1); _tr_i.BackgroundTransparency = 1; Instance.new("UICorner", _tr_i).CornerRadius = UDim.new(0, 10)
     local _tr_st = Instance.new("UIStroke", _tr_btn); _tr_st.Color = _W15_B; _tr_st.Thickness = 1
 
+    -- Bottom Right Interactable Tab Button
     local _br_btn = Instance.new("Frame", cnt); _br_btn.Size = UDim2.new(0.4, -5, 0.325, -5); _br_btn.Position = UDim2.fromScale(0.6, 0.325); _br_btn.BackgroundColor3 = _A10_w; Instance.new("UICorner", _br_btn).CornerRadius = UDim.new(0, 10); _f_g4(_br_btn)
     local _br_i = Instance.new("ImageLabel", _br_btn); _br_i.Size = UDim2.fromScale(1,1); _br_i.BackgroundTransparency = 1; Instance.new("UICorner", _br_i).CornerRadius = UDim.new(0, 10)
     local _br_st = Instance.new("UIStroke", _br_btn); _br_st.Color = _W15_B; _br_st.Thickness = 1
@@ -147,7 +150,7 @@ function _A25_lib:initHub(hub_name, toggle_img, main_img)
             local str = Instance.new("UIStroke", tg); str.Color = _W15_B; str.Thickness = 1
             local box = Instance.new("Frame", tg); box.Size = UDim2.fromOffset(36, 20); box.Position = UDim2.new(1, -46, 0.5, 0); box.AnchorPoint = Vector2.new(0, 0.5); box.BackgroundColor3 = def and _Z13_z or _B11_x; Instance.new("UICorner", box).CornerRadius = UDim.new(1, 0)
             local bStr = Instance.new("UIStroke", box); bStr.Color = _W15_B; bStr.Thickness = 1
-            local dot = Instance.new("Frame", box); dot.Size = UDim2.fromOffset(14, 14); dot.Position = UDim2.new(def and 0.65 or 0.1, 0, 0.5, 0); dot.AnchorPoint = Vector2.new(0, 0.5); dot.BackgroundColor3 = _X14_A; Instance.new("UICorner", dot).CornerRadius = UDim.new(1, 0)
+            local dot = Instance.new("Frame", box); dot.Size = UDim2.fromOffset(14, 14); dot.Position = UDim2.new(def and 0.55 or 0.1, 0, 0.5, 0); dot.AnchorPoint = Vector2.new(0, 0.5); dot.BackgroundColor3 = _X14_A; Instance.new("UICorner", dot).CornerRadius = UDim.new(1, 0)
             local state = def
             tg.MouseButton1Click:Connect(function()
                 state = not state
